@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import React from "react";
+import { ShoppingCartProvider } from "./Context";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
@@ -13,14 +14,16 @@ function App() {
 
 	return (
 		<div className="App">
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/mycart" element={<Cart />} />
-				<Route path="/myaccount" element={<Account />} />
-				<Route path="/*" element={<NotFound />} />
-				<Route path="/login" element={<Login />} />
-			</Routes>
+			<ShoppingCartProvider>
+				<Navbar />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/mycart" element={<Cart />} />
+					<Route path="/myaccount" element={<Account />} />
+					<Route path="/*" element={<NotFound />} />
+					<Route path="/login" element={<Login />} />
+				</Routes>
+			</ShoppingCartProvider>
 		</div>
 	);
 }
